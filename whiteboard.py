@@ -44,6 +44,8 @@ def listFibs(n):
     # spacer
     print()
 
+    return
+
 ################################################################################
 
 def listPrimes(n):
@@ -90,6 +92,8 @@ def listPrimes(n):
 
     # spacer
     print()
+
+    return
     
 ################################################################################
 
@@ -116,11 +120,7 @@ def makeDeck():
             deck.append(faceValue + ' of ' + suit)
 
     # print deck
-    for faceIndex in range(13):
-        for suitIndex in range(4):
-            cardIndex = faceIndex + suitIndex * 13
-            print(deck[cardIndex] + " " * (20 - len(deck[cardIndex])), end = "")
-        print()
+    printDeck(deck)
             
     # spacer
     print()
@@ -142,7 +142,7 @@ def shuffleDeck(deck):
     '''
 
     # variables
-    columnWidth = 20        # width of the coloumns
+    columnWidth = 19        # width of the coloumns
     numColumns = 4          # number of columns
     
     shuffledDeck = []       # list to hold the deck
@@ -152,16 +152,40 @@ def shuffleDeck(deck):
        shuffledDeck.append(deck.pop(random.randint(0, 51 - i)))
 
     # print deck
-    count = 1
-    for card in shuffledDeck:
-        print(card, end = "")
-        print(" " * (columnWidth - len(card)), end = "")
-        if (count % numColumns) == 0:
-            print()
-        count += 1
+    printDeck(shuffledDeck)
 
     # spacer
     print()
+
+    return
+
+################################################################################
+
+def printDeck(deck):
+
+    '''Prints the submitted list representing a deck cards
+
+    arguments:
+        deck : a list of strings representing a deck of 52 cards
+
+    returns:
+        none
+    '''
+
+    # error handling
+    if len(deck) != 52:
+        print("\n\n\n !!! Illegal deck!  Must be 52 elements !!!\n\n\n")
+        return
+
+    # print the deck
+    for faceIndex in range(13):
+        for suitIndex in range(4):
+            cardIndex = faceIndex + suitIndex * 13
+            print(" " * (19 - len(deck[cardIndex])), end = "")
+            print(deck[cardIndex], end = "")
+        print()
+
+    return
 
 ################################################################################
 
@@ -209,7 +233,8 @@ def bubbleSort(listSize):
     numList.sort()
     print("  Re-sorted:", numList)
     print("2nd largest:", numList[-2])
-            
+
+    return
 
 ################################################################################
 
@@ -252,6 +277,8 @@ def printIntList(intList):
 
         # increment the count
         count += 1
+
+    return
 
 ################################################################################
 
