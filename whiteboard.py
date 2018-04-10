@@ -116,14 +116,12 @@ def makeDeck():
             deck.append(faceValue + ' of ' + suit)
 
     # print deck
-    count = 1
-    for card in deck:
-        print(card, end = "")
-        print(" " * (columnWidth - len(card)), end = "")
-        if (count % numColumns) == 0:
-            print()
-        count += 1
-
+    for faceIndex in range(13):
+        for suitIndex in range(4):
+            cardIndex = faceIndex + suitIndex * 13
+            print(deck[cardIndex] + " " * (20 - len(deck[cardIndex])), end = "")
+        print()
+            
     # spacer
     print()
 
@@ -164,6 +162,54 @@ def shuffleDeck(deck):
 
     # spacer
     print()
+
+################################################################################
+
+def bubbleSort(listSize):
+
+    '''Creates a list of random integers then sorts, reverses, and re-sorts it.
+
+    arguments:
+        listSize: integer (2 or greater)
+
+    returns:
+        none
+    '''
+
+    # define variables
+    numList = []        # the list
+
+    # error handling
+    if (listSize < 2) or (listSize != int(listSize)):
+        print("\n\n\n !!! Argument must be integer of value 2+ !!!\n\n\n")
+
+    # create the random list
+    for n in range(listSize):
+        numList.append(random.randint(0, 999))
+
+    print("Random list:", numList)
+
+    # bubble sort
+    n = len(numList) - 1            # maximum number of passes
+    for p in range(n):              # pass counter
+        exchange = False            # exchange flag
+        for i in range(n - p):      # list index
+            # exchange elements if the 1st one is larger
+            if numList[i] > numList[i + 1]:
+                numList[i], numList[i + 1] = numList[i + 1], numList[i]
+                exchange = True     # flag that an exchange was made
+        print("    Pass #" + str(p + 1) + ":", numList)
+        # end sort if no exchanges were made
+        if not exchange:
+            break
+
+    # built-in Python sort
+    numList.sort(reverse = True)
+    print("   Reversed:", numList)
+    numList.sort()
+    print("  Re-sorted:", numList)
+    print("2nd largest:", numList[-2])
+            
 
 ################################################################################
 
@@ -209,51 +255,7 @@ def printIntList(intList):
 
 ################################################################################
 
-def bubbleSort(listSize):
-
-    '''Creates a list of random integers then sorts, reverses, and re-sorts it.
-
-    arguments:
-        listSize: integer (2 or greater)
-
-    returns:
-        none
-    '''
-
-    # define variables
-    numList = []        # the list
-
-    # error handling
-    if (listSize < 2) or (listSize != int(listSize)):
-        print("\n\n\n !!! Argument must be integer of value 2+ !!!\n\n\n")
-
-    # create the random list
-    for n in range(listSize):
-        numList.append(random.randint(0, 999))
-
-    print("Random list:", numList)
-
-    # bubble sort
-    numElements = len(numList) - 1
-    for p in range(numElements):
-        exchange = False
-        for i in range(numElements - p):
-            if numList[i] > numList[i + 1]:
-                numList[i], numList[i + 1] = numList[i + 1], numList[i]
-                exchange = True
-        print("    Pass #" + str(p + 1) + ":", numList)
-        if not exchange:
-            break
-
-    # built-in Python sort
-    numList.sort(reverse = True)
-    print("   Reversed:", numList)
-    numList.sort()
-    print("  Re-sorted:", numList)
-    print("2nd largest:", numList[-2])
-            
-
-################################################################################
+# run the functions
 
 print("Fibonacci numbers:")
 listFibs(50)
