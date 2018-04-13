@@ -74,7 +74,7 @@ def listPrimes(n):
         isPrime = True      # flag to see if the number is prime
 
         # loop through all possible divisors up to num/2
-        for i in range(2, num // 2):
+        for i in range(2, num // 2 + 1):
             
             # if the number divides evenly flag it as not prime
             if (num/i) == int(num/i):
@@ -209,7 +209,7 @@ def bubbleSort(listSize):
 
     # create the random list
     for n in range(listSize):
-        numList.append(random.randint(0, 999))
+        numList.append(random.randint(100, 999))
 
     print("Random list:", numList)
 
