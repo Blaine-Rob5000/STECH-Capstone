@@ -18,39 +18,56 @@ def nameInit():
                   "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
     SYLLABLES = []
 
-    for let1 in VOWELS:
-        for let2 in CONSONANTS:
-            if not ("yy" in (let1 + let2)):
-                SYLLABLES.append(let1.upper() + let2)
+    for letter1 in VOWELS:
+        for letter2 in VOWELS:
+            if not ("yy" in (letter1 + letter2)):
+                SYLLABLES.append(letter1.upper() + letter2)
 
-    for let1 in CONSONANTS:
-        for let2 in VOWELS:
-            if not ("yy" in (let1 + let2)):
-                SYLLABLES.append(let1.upper() + let2)
+    for letter1 in VOWELS:
+        for letter2 in CONSONANTS:
+            if not ("yy" in (letter1 + letter2)):
+                SYLLABLES.append(letter1.upper() + letter2)
 
-    for let1 in VOWELS:
-        for let2 in CONSONANTS:
-            for let3 in VOWELS:
-                if not ("yy" in (let1 + let2 + let3)):
-                    SYLLABLES.append(let1.upper() + let2 + let3)
+    for letter1 in CONSONANTS:
+        for letter2 in VOWELS:
+            if not ("yy" in (letter1 + letter2)):
+                SYLLABLES.append(letter1.upper() + letter2)
 
-    for let1 in VOWELS:
-        for let2 in CONSONANTS:
-            for let3 in CONSONANTS:
-                if not ("yy" in (let1 + let2 + let3)):
-                    SYLLABLES.append(let1.upper() + let2 + let3)
+    for letter1 in VOWELS:
+        for letter2 in VOWELS:
+            for letter3 in CONSONANTS:
+                if not ("yy" in (letter1 + letter2 + letter3)):
+                    SYLLABLES.append(letter1.upper() + letter2 + letter3)
 
-    for let1 in CONSONANTS:
-        for let2 in VOWELS:
-            for let3 in VOWELS:
-                if not ("yy" in (let1 + let2 + let3)):
-                    SYLLABLES.append(let1.upper() + let2 + let3)
+    for letter1 in VOWELS:
+        for letter2 in CONSONANTS:
+            for letter3 in VOWELS:
+                if not ("yy" in (letter1 + letter2 + letter3)):
+                    SYLLABLES.append(letter1.upper() + letter2 + letter3)
 
-    for let1 in CONSONANTS:
-        for let2 in VOWELS:
-            for let3 in CONSONANTS:
-                if not ("yy" in (let1 + let2 + let3)):
-                    SYLLABLES.append(let1.upper() + let2 + let3)
+    for letter1 in VOWELS:
+        for letter2 in CONSONANTS:
+            for letter3 in CONSONANTS:
+                if not ("yy" in (letter1 + letter2 + letter3)):
+                    SYLLABLES.append(letter1.upper() + letter2 + letter3)
+
+    for letter1 in CONSONANTS:
+        for letter2 in VOWELS:
+            for letter3 in VOWELS:
+                if not ("yy" in (letter1 + letter2 + letter3)):
+                    SYLLABLES.append(letter1.upper() + letter2 + letter3)
+
+    for letter1 in CONSONANTS:
+        for letter2 in VOWELS:
+            for letter3 in CONSONANTS:
+                if not ("yy" in (letter1 + letter2 + letter3)):
+                    SYLLABLES.append(letter1.upper() + letter2 + letter3)
+
+    for letter1 in CONSONANTS:
+        for letter2 in CONSONANTS:
+            for letter3 in VOWELS:
+                if not ("yy" in (letter1 + letter2 + letter3)):
+                    SYLLABLES.append(letter1.upper() + letter2 + letter3)
 
 ############################################################
 
@@ -62,39 +79,34 @@ def randName():
     returns:  string (representing the random name)
     '''
 
-    name = ""
+    name = SYLLABLES[random.randint(0, len(SYLLABLES) - 1)]
     
-    name += SYLLABLES[random.randint(0, len(SYLLABLES) - 1)]
-    
-    if random.randint(1, 100) < 11:
+    if random.randint(1, 100) <= 10:
         name += ACCENT[random.randint(0, len(ACCENT) -1)]
         
-    if random.randint(1, 100) < 51:
+    if random.randint(1, 100) <= 50:
         syllable = SYLLABLES[random.randint(0, len(SYLLABLES) -1)]
 
-        last3 = name[-2:] + syllable[0].lower()
-        
-        while allConsonants(last3) or allVowels(last3):
+        checkThis = (name[-2:] + syllable[:2])
+        while threeSame(checkThis):
             syllable = SYLLABLES[random.randint(0, len(SYLLABLES) -1)]
-            last3 = name[-2:] + syllable[0].lower()
+            checkThis = (name[-2:] + syllable[:2])
             
         if (name[-1] not in ACCENT) and (random.randint(1, 100) <= 90):
             syllable = syllable.lower()
 
         name += syllable
         
-        if random.randint(1, 100) < 11:
+        if random.randint(1, 100) <= 10:
             name += ACCENT[random.randint(0, len(ACCENT) -1)]
             
     syllable = SYLLABLES[random.randint(0, len(SYLLABLES) -1)]
     
-
-    last3 = name[-2:] + syllable[0].lower()
-        
-    while allConsonants(last3) or allVowels(last3):
+    checkThis = (name[-2:] + syllable[:2])
+    while threeSame(checkThis):
         syllable = SYLLABLES[random.randint(0, len(SYLLABLES) -1)]
-        last3 = name[-2:] + syllable[0].lower()
-
+        checkThis = (name[-2:] + syllable[:2])
+        
     if (name[-1] not in ACCENT) and (random.randint(1, 100) <= 90):
         syllable = syllable.lower()
 
@@ -104,33 +116,61 @@ def randName():
 
 ############################################################
 
-def allConsonants(stringToCheck):
-	'''
-	checks the string to see if it is all consonants
-	'''
-	for letter in stringToCheck:
-		if letter not in CONSONANTS: return False
-	return True
+def threeSame(stringToCheck):
+    '''
+    checks for all vowels or all consonants
+    '''
+    if threeConsonants(stringToCheck) or threeVowels(stringToCheck):
+        return True
+    return False
 
 ############################################################
 
-def allVowels(stringToCheck):
-	'''
-	checks the string to see if is all vowels
-	'''
-	for letter in stringToCheck:
-		if letter not in VOWELS: return False
-	return True
+def threeConsonants(stringToCheck):
+    '''
+    checks the string to see if it contains 3 consecutive consonants
+    '''
+    stringToCheck = stringToCheck.lower()
+    counter = 0
+    flag = False
+    for letter in stringToCheck:
+        if (letter in CONSONANTS) and (letter != 'y'):
+            counter += 1
+            if counter > 2:
+                flag = True
+        else:
+            counter = 0
+    return flag
 
 ############################################################
 
-def main(numNames = 100):
+def threeVowels(stringToCheck):
+    '''
+    checks the string to see if it contains 3 consecutive vowels
+    '''
+    stringToCheck = stringToCheck.lower()
+    counter = 0
+    flag = False
+    for letter in stringToCheck:
+        if (letter in VOWELS) and (letter != 'y'):
+            counter += 1
+            if counter > 2:
+                flag = True
+        else:
+            counter = 0
+    return flag
+
+############################################################
+
+def main(numNames = 40):
     maxLength = 10
     numColumns = 4 # 80 // (maxLength + 3)
     name = []
 
     while len(name) < numNames:
         name.append(randName())
+
+    name.sort()
 
     i = 0
     while i < len(name):
@@ -152,6 +192,5 @@ print("Number of Syllables:", len(SYLLABLES))
 num = len(SYLLABLES)**3 * len(ACCENT)**2
 print("Approx number of possible names: {:,}\n".format(num))
 
-
-main(200)
+main(120)
 
