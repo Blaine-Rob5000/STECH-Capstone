@@ -365,20 +365,29 @@ The options sub-menu has sliders to control the volume of game sound effects and
 
 Here is a screenshot of actual gameplay.  The player (a frog) is near the center of the screen.  Map tiles and objects in the player's visible radius (8 tiles, with line of sight blocked by walls) are displayed in the "lighted" area.  Explored map tiles that are not visible are shaded darker.  On the right side of the screen, from the top down, are displayed:
 
-The player's current / maximum health
+* The player's current / maximum health
 
-The player's level, and current xp / xp needed to reach the next level
+* The player's level, and current xp / xp needed to reach the next level
 
-The level of the dungeon map that the player is currently exploring
+* The level of the dungeon map that the player is currently exploring
 
-A mini-map that shows explored tiles (and highlights currently visible tiles)
+* A mini-map that shows explored tiles (and highlights currently visible tiles)
 
-A list of recent in-game messages
+* A list of recent in-game messages
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/GameScreen.PNG "Game Screen")
 
+The Help menu lists the in-game commands and gives some advice on playing the game.
 
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/HelpMenu.PNG "Help Menu")
 
+The inventory menu lists all of the items the player is currently carrying.  Equipped items have the equipment slot indicated next to them.  (Each slot - main hand, off hand, and neck - can hold only one item.)
+
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/InventoryMenu.PNG "Inventory Menu")
+
+The legacy text file (generated when the player dies or wins the game) lists all of the in-game messages the player recieved.
+
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/LegacyFile.PNG "Legacy File")
 
 # Tests
 
