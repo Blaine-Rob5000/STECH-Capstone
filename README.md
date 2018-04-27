@@ -391,10 +391,22 @@ The legacy text file (generated when the player dies or wins the game) lists all
 
 # Tests
 
-???
+Testing the game is simply a matter of playing it.  It is possible that a few lingering bugs remain to be squashed, but I have tested it rather thoroughly and believe the code to be sound and functioning as intended.  The contants file contains several variables that can be used to tweak gameplay and a flag to signal certain debug messages to print during gameplay.
 
 # Contributors
 
-???
+The program is an original creation of me (Robin G. Blaine) and, as such, I claim it as my intellectual property.  However, certain elements were provided by other parties with the provision that they recieve credit.
 
+* Graphics are courtesy of DragonDePlatino and DawnBringer:
 
+	https://opengameart.org/content/dawnlike-16x16-universal-rogue-like-tileset-v181
+
+Music from Jukedeck - create your own at http://jukedeck.com
+
+I also wish to extend a special thanks to Michael Coates, the self-proclaimed "Terrible Programmer" for his YouTube tutorial on pygame, the doryen library, and roguelike game programming.
+
+Others who wish to modify the program may do so freely, provided that:
+
+* All proper credit is given to myself and the contributers listed above
+
+* The program may only be distributed free of charge and not "for profit"
