@@ -16,7 +16,7 @@ In lieu of using an inheritance scheme for objects, I opted to use a component s
 
 # Installation
 
-As it stands, installation of the game requires that Python v2.7.8 as well as the pygame and libtcodpy modules be installed.  To run the program, open it in Idle or another IDE and run it from there.
+As it stands, installation of the game requires that Python v2.7.8 as well as the pygame and libtcodpy modules be installed in the Python site packages directory.  To run the program, open it in Idle or another IDE and run it from there.
 
 # Code Example
 
