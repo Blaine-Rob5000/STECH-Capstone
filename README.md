@@ -359,6 +359,27 @@ The title and credits screen includes ui buttons to continue a saved game, start
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/TitleScreen.PNG "Title Screen")
 
+The options sub-menu has sliders to control the volume of game sound effects and music and a button to save these preferences to a file. (Saved preferences are automatically loaded when the game is run.)
+
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/OptionsMenu.PNG "Options Menu")
+
+Here is a screenshot of actual gameplay.  The player (a frog) is near the center of the screen.  Map tiles and objects in the player's visible radius (8 tiles, with line of sight blocked by walls) are displayed in the "lighted" area.  Explored map tiles that are not visible are shaded darker.  On the right side of the screen, from the top down, are displayed:
+
+The player's current / maximum health
+
+The player's level, and current xp / xp needed to reach the next level
+
+The level of the dungeon map that the player is currently exploring
+
+A mini-map that shows explored tiles (and highlights currently visible tiles)
+
+A list of recent in-game messages
+
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/GameScreen.PNG "Game Screen")
+
+
+
+
 # Tests
 
 ???
