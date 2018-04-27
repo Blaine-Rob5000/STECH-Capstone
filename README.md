@@ -14,6 +14,10 @@ The game automatically saves the players progress when the player exits the game
 
 In lieu of using an inheritance scheme for objects, I opted to use a component scheme.  The main type of in-game object is called an "actor" and represents any object in the game that can move and/or interact in the game.  Component objects are created and attached to the actor object to denote different types of objects.  For example, creature components add the ability to attack, take damage, and "die."  Item commponents allow the actor object to be "used" in order to activate various abilities.  When "attaching" a component to the actor object, the actor is instructed that the component belongs to it the component is instructed that it belongs to the actor.
 
+# Installation
+
+As it stands, installation of the game requires that Python v2.7.8 as well as the pygame and libtcodpy modules be installed.  To run the program, open it in Idle or another IDE and run it from there.
+
 # Code Example
 
 The actor object is the primary object in the game. The creature component was, by far, the most complicated one.  When an actor object is constructed, an optional creature argument is passed (defaulting to None) and attached to the actor object.
@@ -348,10 +352,6 @@ class compCreature:
 # Motivation
 
 My motivation for this project stems from my love of programming and of games. The orginal PC game, Rogue, was a huge inspiration for me to become a programmer.
-
-# Installation
-
-As it stands, installation of the game requires that Java v2.7.8 as well as the pygame and libtcodpy modules be installed.  To run the program, open it in Idle or another IDE and run it from there.
 
 # API Reference
 
