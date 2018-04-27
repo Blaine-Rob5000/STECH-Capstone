@@ -401,12 +401,12 @@ The program is an original creation of me (Robin G. Blaine) and, as such, I clai
 
 	https://opengameart.org/content/dawnlike-16x16-universal-rogue-like-tileset-v181
 
-Music from Jukedeck - create your own at http://jukedeck.com
+* Music from Jukedeck - create your own at http://jukedeck.com
 
 I also wish to extend a special thanks to Michael Coates, the self-proclaimed "Terrible Programmer" for his YouTube tutorial on pygame, the doryen library, and roguelike game programming.
 
 Others who wish to modify the program may do so freely, provided that:
 
-* All proper credit is given to myself and the contributers listed above
+1. All proper credit is given to myself and the contributers listed above
 
-* The program may only be distributed free of charge and not "for profit"
+2. The program may only be distributed free of charge and not "for profit"
