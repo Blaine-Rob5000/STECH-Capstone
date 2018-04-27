@@ -192,19 +192,172 @@ class objActor:
 		self._animation = ASSETS.animDict[self._animationKey]
 ```
 
+and the creature component:
 
+```python
+
+class compCreature:
+
+	'''
+	have health and can die
+	can damage other objects by attacking them
+	'''
+
+	def __init__(self, nameInstance,
+		baseAttack = 3,
+		baseDefense = 0,
+		health = 10,
+		deathFunction = None,
+		deathAnimKey = "SPR_CORPSE_RAVEN",
+		levelCurrent = 1,
+		xpCurrent = None):
+
+		self._nameInstance = nameInstance
+
+		self._baseAttack = baseAttack
+		self._baseDefense = baseDefense
+
+		self._maxHealth = health
+		self._health = health
+
+		self.deathFunction = deathFunction
+		self._deathAnimKey = deathAnimKey
+
+		self._levelCurrent = levelCurrent
+
+		if xpCurrent:
+			self._xpCurrent = xpCurrent
+		else:
+			self._xpCurrent = self._levelCurrent * (self._levelCurrent - 1) * 50
+
+		self._xpNextLevel = self._levelCurrent * (self._levelCurrent + 1) * 50
+
+	def attack(self, target):
+
+		damage = self._power
+
+		gameMessage(self.owner._displayName + " attacks " + target._displayName + "!",
+			const.COLOR_ATTACK)
+
+		# if the target is a turtle, chance to break player's weapon
+		if self.owner == PLAYER and target._nameObject == "turtle" and doryen.random_get_int(0, 1, 100) <= const.BREAK_CHANCE:
+
+			allEquippedItems = self.owner.container._equippedItems
+			if allEquippedItems:
+				for item in allEquippedItems:
+					if item.equipment._slot  == 'main hand':
+						gameMessage("Your sword broke!", const.COLOR_RED)
+						self.owner.container._inventory.remove(item)
+
+		# if the attacker is a turtle, chance to break player's shield
+		if self.owner._nameObject == "turtle" and target == PLAYER and doryen.random_get_int(0, 1, 100) <= const.BREAK_CHANCE:
+
+			allEquippedItems = target.container._equippedItems
+
+			if allEquippedItems:
+				for item in allEquippedItems:
+					if item.equipment._slot  == 'off hand':
+						gameMessage("Your shield broke!", const.COLOR_RED)
+						target.container._inventory.remove(item)
+
+		target.creature.takeDamage(damage)
+
+		if damage > 0 and self.owner is PLAYER:
+			hitSound = ASSETS.SFX_HIT_LIST[doryen.random_get_int(0, 0, len(ASSETS.SFX_HIT_LIST) - 1)]
+			pygame.mixer.Sound.play(hitSound)
+
+		# if the creature died, gain xp
+		if target.creature == None:
+			self._xpCurrent += target._xpValue
+			# if enough xp, level up
+			if self._xpCurrent >= self._xpNextLevel and self._levelCurrent < const.PLAYER_LEVEL_MAX:
+				self.levelUp()
+
+
+	def takeDamage(self, damage):
+		damageTaken = max(1, damage - self._defense)
+		gameMessage(self.owner._displayName + " takes " + str(damageTaken) + " damage!",
+			const.COLOR_DAMAGE)
+		self._health -= damageTaken
+
+		if (self._health <= 0) and (self.deathFunction):
+			self.deathFunction(self.owner, self._deathAnimKey)
+
+	def healDamage(self, value):
+		if value > (self._maxHealth - self._health):
+			value = (self._maxHealth - self._health)
+		self._health += value
+		gameMessage(self.owner._displayName + " is healed for " + str(value) + " points",
+			const.COLOR_HEAL)
+
+	def move(self, xDiff, yDiff):
+		tileIsWall = GAME._mapCurrent[self.owner._x + xDiff][self.owner._y + yDiff]._impassable
+
+		target = mapCheckForCreature(self.owner._x + xDiff, self.owner._y + yDiff, self.owner)
+
+		if target:
+			self.attack(target)
+
+		if not tileIsWall and target == None:
+			self.owner._x += xDiff
+			self.owner._y += yDiff
+
+	def levelUp(self):
+		self._levelCurrent += 1
+		self._xpNextLevel += self._levelCurrent * 100
+		self._maxHealth += doryen.random_get_int(0, 1, const.LVL_UP_HP_MAX)
+		self._health = self._maxHealth
+		if self._levelCurrent % 3 == 0:
+			self._baseAttack += 1
+		if self._levelCurrent % 5 == 0:
+			self._baseDefense += 1
+		gameMessage(self.owner._displayName + " is now level " + str(self._levelCurrent) +"!",
+			const.COLOR_LEVEL_UP)
+
+	@property
+	def _power(self):
+
+		equipmentBonusList = []
+		if self.owner.container:
+			equipmentBonusList = [obj.equipment._attackBonus for obj in self.owner.container._equippedItems]
+
+		equipmentBonusTotal = 0
+		for bonus in equipmentBonusList:
+			equipmentBonusTotal += bonus
+
+		totalDamage = self._baseAttack + equipmentBonusTotal
+
+		return totalDamage
+
+	@property
+	def _defense(self):
+
+		equipmentBonusList = []
+		if self.owner.container:
+			equipmentBonusList = [obj.equipment._defenseBonus for obj in self.owner.container._equippedItems]
+
+		equipmentBonusTotal = 0
+		for bonus in equipmentBonusList:
+			equipmentBonusTotal += bonus
+
+		totalDefense = self._baseDefense + equipmentBonusTotal
+		return totalDefense
+
+```
 
 # Motivation
 
-???
+My motivation for this project stems from my love of programming and of games. The orginal PC game, Rogue, was a huge inspiration for me to become a programmer.
 
 # Installation
 
-???
+As it stands, installation of the game requires that Java v2.7.8 as well as the pygame and libtcodpy modules be installed.  To run the program, open it in Idle or another IDE and run it from there.
 
 # API Reference
 
-???
+The title and credits screen includes ui buttons to continue a saved game, start a new game, quit the game, and to open the options sub-menu.
+
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/TitleScreen.PNG "Title Screen")
 
 # Tests
 
