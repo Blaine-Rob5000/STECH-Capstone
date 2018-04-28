@@ -391,7 +391,7 @@ The legacy text file (generated when the player dies or wins the game) lists all
 
 # Tests
 
-Testing the game is simply a matter of playing it.  It is possible that a few lingering bugs remain to be squashed, but I have tested it rather thoroughly and believe the code to be sound and functioning as intended.  The contants file contains several variables that can be used to tweak gameplay and a flag to signal certain debug messages to print during gameplay.
+Testing the game is simply a matter of playing it.  It is possible that a few lingering bugs remain to be squashed, but I have tested it rather thoroughly and believe the code to be sound and functioning as intended.  The constants file contains several variables that can be used to tweak gameplay and a flag to signal certain debug messages to print during gameplay.
 
 # Contributors
 
