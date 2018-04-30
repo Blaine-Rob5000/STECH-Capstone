@@ -395,7 +395,7 @@ The legacy text file (generated when the player dies or wins the game) lists all
 
 # Tests
 
-Testing the game is simply a matter of playing it.  There is one bug that I have, as yet, been unable to squash:  after returning to the main menu via the in-game pause menu and then selecting the option to continue the game, the player's line-of-sight is not refreshed until the player moves.  Other than that, I believe the code to be sound and functioning as intended.  The constants file contains several variables that can be used to tweak gameplay and a flag to signal certain debug messages to print during gameplay.
+Testing the game is simply a matter of playing it.  I have thoroughly tested the game and believe the code to be sound and functioning as intended.  The constants file contains several variables that can be used to tweak gameplay and a flag to signal certain debug messages to print during gameplay.
 
 # Contributors
 
