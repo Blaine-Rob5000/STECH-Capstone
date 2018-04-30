@@ -1,4 +1,4 @@
-# STECH-Capstone Project: Pyrate
+# STECH-Capstone Project: Pyrate (roguelike)
 
 by R. G. Blaine
 
