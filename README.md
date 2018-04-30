@@ -377,11 +377,15 @@ Here is a screenshot of actual gameplay.  The player (a frog) is near the center
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/GameScreen.PNG "Game Screen")
 
-The Help menu lists the in-game commands and gives some advice on playing the game.
+The Help menu (H) lists the in-game commands and gives some advice on playing the game.
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/HelpMenu.PNG "Help Menu")
 
-The inventory menu lists all of the items the player is currently carrying.  Equipped items have the equipment slot indicated next to them.  (Each slot - main hand, off hand, and neck - can hold only one item.)
+The Pause menu (P) pauses the game and gives the player the option to resume gameplay (P or ESCAPE) or to save and quit to the main menu (Q).
+
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/PauseMenu.PNG "Pause Menu")
+
+The Inventory menu (I) lists all of the items the player is currently carrying.  Equipped items have the equipment slot indicated next to them.  (Each slot - main hand, off hand, and neck - can hold only one item.)
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/InventoryMenu.PNG "Inventory Menu")
 
