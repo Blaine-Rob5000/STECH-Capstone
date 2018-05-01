@@ -26,7 +26,6 @@ Actor Object:
 
 ```python
 class objActor:
-
 	'''
 	any game element that can move/interact with other elements
 	'''
@@ -34,68 +33,70 @@ class objActor:
 	global LOS_MAP
 
 	def __init__(self, x, y, nameObject, animationKey,
-		animationDuration = 1.0,
-		xpVal = 0,
-		depth = 0,
-		status = None,
+		animationDuration 		= 1.0,
+		xpVal 				= 0,
+		depth 				= 0,
+		status 				= None,
 
-		creature = None,
-		ai = None,
-		container = None,
-		item = None,
-		equipment = None,
-		stairs = None):
+		creature 			= None,
+		ai 				= None,
+		container 			= None,
+		item 				= None,
+		equipment 			= None,
+		stairs 				= None):
 
 		# map address
-		self._x = x
-		self._y = y
+		self._x 			= x
+		self._y 			= y
 
-		self._xpValue = xpVal
-		self._depth = depth
-		self._status = status
+		self._xpValue 			= xpVal
+		self._depth 			= depth
+		self._status 			= status
 
-		self._nameObject = nameObject
+		self._nameObject 		= nameObject
 
 		# sprite
-		self._animationKey = animationKey
-		self._animation = ASSETS.animDict[self._animationKey]
-		self._animationDuration = animationDuration / 1.0
-		self._flickerSpeed = self._animationDuration / len(self._animation) # individual frame duration
-		self._flickterTimer = 0.0
-		self._spriteCounter = 0
+		self._animationKey 		= animationKey
+		self._animation 		= ASSETS.animDict[self._animationKey]
+		self._animationDuration 	= animationDuration / 1.0
+
+		# individual frame duration
+		self._flickerSpeed 		= self._animationDuration / len(self._animation)
+		self._flickterTimer 		= 0.0
+		self._spriteCounter 		= 0
 
 		# creature component
-		self.creature = creature
+		self.creature 			= creature
 		if self.creature:
-			self.creature.owner = self
+			self.creature.owner 	= self
 
 		# ai component
-		self.ai = ai
+		self.ai 			= ai
 		if self.ai:
-			self.ai.owner = self
+			self.ai.owner 		= self
 
 		# container component
-		self.container = container
+		self.container 			= container
 		if self.container:
-			self.container.owner = self
+			self.container.owner 	= self
 
 		# item component
-		self.item = item
+		self.item 			= item
 		if self.item:
-			self.item.owner = self
+			self.item.owner 	= self
 
 		# equipment component
-		self.equipment = equipment
+		self.equipment 			= equipment
 		if self.equipment:
-			self.equipment.owner = self
+			self.equipment.owner 	= self
 
-			self.item = compItem()
-			self.item.owner = self
+			self.item 		= compItem()
+			self.item.owner 	= self
 
 		# stairs component
-		self.stairs = stairs
+		self.stairs 			= stairs
 		if self.stairs:
-			self.stairs.owner = self
+			self.stairs.owner 	= self
 
 	@property
 	def _displayName(self):
@@ -115,7 +116,8 @@ class objActor:
 
 	def draw(self):
 		if doryen.map_is_in_fov(LOS_MAP, self._x, self._y):
-			SURFACE_MAP.blit(self._animation[self._spriteCounter], (self._x * const.TILE_WIDTH, self._y * const.TILE_HEIGHT))
+			SURFACE_MAP.blit(self._animation[self._spriteCounter],
+				(self._x * const.TILE_WIDTH, self._y * const.TILE_HEIGHT))
 			if len(self._animation) > 1:
 				if CLOCK.get_fps() > 0.0:
 					self._flickterTimer += 1 / CLOCK.get_fps()
@@ -141,7 +143,7 @@ class objActor:
 	def moveTowards(self, other):
 
 		'''
-
+		move directly towards the specified other object
 		'''
 
 		diffX = other._x - self._x
@@ -162,7 +164,7 @@ class objActor:
 	def moveAwayFrom(self, other):
 
 		'''
-
+		move directly away from the specified other object
 		'''
 
 		diffX = -(other._x - self._x)
@@ -182,7 +184,7 @@ class objActor:
 	def animDestroy(self):
 
 		'''
-
+		destroys animation surface objects so that the actor object may be saved
 		'''
 
 		self._animation = None
@@ -190,7 +192,7 @@ class objActor:
 	def animInit(self):
 
 		'''
-
+		reinitializes animation surface objects 
 		'''
 
 		self._animation = ASSETS.animDict[self._animationKey]
@@ -201,40 +203,39 @@ Creature Component:
 ```python
 
 class compCreature:
-
 	'''
 	have health and can die
 	can damage other objects by attacking them
 	'''
 
 	def __init__(self, nameInstance,
-		baseAttack = 3,
-		baseDefense = 0,
-		health = 10,
-		deathFunction = None,
-		deathAnimKey = "SPR_CORPSE_RAVEN",
-		levelCurrent = 1,
-		xpCurrent = None):
+		baseAttack 			= 3,
+		baseDefense 		= 0,
+		health 				= 10,
+		deathFunction 		= None,
+		deathAnimKey 		= "SPR_CORPSE_RAVEN",
+		levelCurrent 		= 1,
+		xpCurrent 			= None):
 
-		self._nameInstance = nameInstance
+		self._nameInstance 	= nameInstance
 
-		self._baseAttack = baseAttack
-		self._baseDefense = baseDefense
+		self._baseAttack 	= baseAttack
+		self._baseDefense 	= baseDefense
 
-		self._maxHealth = health
-		self._health = health
+		self._maxHealth 	= health
+		self._health 		= health
 
-		self.deathFunction = deathFunction
-		self._deathAnimKey = deathAnimKey
+		self.deathFunction 	= deathFunction
+		self._deathAnimKey 	= deathAnimKey
 
-		self._levelCurrent = levelCurrent
+		self._levelCurrent 	= levelCurrent
 
 		if xpCurrent:
-			self._xpCurrent = xpCurrent
+			self._xpCurrent	= xpCurrent
 		else:
 			self._xpCurrent = self._levelCurrent * (self._levelCurrent - 1) * 50
 
-		self._xpNextLevel = self._levelCurrent * (self._levelCurrent + 1) * 50
+		self._xpNextLevel 	= self._levelCurrent * (self._levelCurrent + 1) * 50
 
 	def attack(self, target):
 
@@ -299,7 +300,7 @@ class compCreature:
 
 		target = mapCheckForCreature(self.owner._x + xDiff, self.owner._y + yDiff, self.owner)
 
-		if target:
+		if target and target is not self.owner:
 			self.attack(target)
 
 		if not tileIsWall and target == None:
@@ -346,7 +347,6 @@ class compCreature:
 
 		totalDefense = self._baseDefense + equipmentBonusTotal
 		return totalDefense
-
 ```
 
 # Motivation
