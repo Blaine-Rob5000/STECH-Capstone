@@ -357,11 +357,11 @@ My motivation for this project stems from my love of programming and of games. T
 
 The title and credits screen includes ui buttons to continue a saved game, start a new game, quit the game, and to open the options sub-menu.
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/TitleScreen.PNG "Title Screen")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/TitleScreen.PNG "Title Screen")
 
 The options sub-menu has sliders to control the volume of game sound effects and music and a button to save these preferences to a file. (Saved preferences are automatically loaded when the game is run.)
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/OptionsMenu.PNG "Options Menu")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/OptionsMenu.PNG "Options Menu")
 
 Here is a screenshot of actual gameplay.  The player (a frog) is near the center of the screen.  Map tiles and objects in the player's visible radius (8 tiles, with line of sight blocked by walls) are displayed in the "lighted" area.  Explored map tiles that are not visible are shaded darker.  On the right side of the screen, from the top down, are displayed:
 
@@ -375,23 +375,23 @@ Here is a screenshot of actual gameplay.  The player (a frog) is near the center
 
 * A list of recent in-game messages
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/GameScreen.PNG "Game Screen")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/GameScreen.PNG "Game Screen")
 
 The Help menu (H) lists the in-game commands and gives some advice on playing the game.
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/HelpMenu.PNG "Help Menu")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/HelpMenu.PNG "Help Menu")
 
 The Pause menu (P) pauses the game and gives the player the option to resume gameplay (P or ESCAPE) or to save and quit to the main menu (Q).
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/PauseMenu.PNG "Pause Menu")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/PauseMenu.PNG "Pause Menu")
 
 The Inventory menu (I) lists all of the items the player is currently carrying.  Equipped items have the equipment slot indicated next to them.  (Each slot - main hand, off hand, and neck - can hold only one item.)
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/InventoryMenu.PNG "Inventory Menu")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/InventoryMenu.PNG "Inventory Menu")
 
 The legacy text file (generated when the player dies or wins the game) lists all of the in-game messages the player recieved.
 
-![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Pyrate/LegacyFile.PNG "Legacy File")
+![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/LegacyFile.PNG "Legacy File")
 
 # Tests
 
