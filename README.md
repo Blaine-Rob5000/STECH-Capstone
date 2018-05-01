@@ -130,7 +130,6 @@ class objActor:
 
 
 	def distanceFrom(self, other):
-
 		'''
 		returns the distance between self and other calculated via pythagorean theorem
 		'''
@@ -141,7 +140,6 @@ class objActor:
 		return math.sqrt(diffX ** 2 + diffY ** 2)
 
 	def moveTowards(self, other):
-
 		'''
 		move directly towards the specified other object
 		'''
@@ -162,7 +160,6 @@ class objActor:
 
 
 	def moveAwayFrom(self, other):
-
 		'''
 		move directly away from the specified other object
 		'''
@@ -182,7 +179,6 @@ class objActor:
 		self.creature.move(moveX, moveY)
 
 	def animDestroy(self):
-
 		'''
 		destroys animation surface objects so that the actor object may be saved
 		'''
@@ -190,7 +186,6 @@ class objActor:
 		self._animation = None
 
 	def animInit(self):
-
 		'''
 		reinitializes animation surface objects 
 		'''
@@ -277,7 +272,6 @@ class compCreature:
 			# if enough xp, level up
 			if self._xpCurrent >= self._xpNextLevel and self._levelCurrent < const.PLAYER_LEVEL_MAX:
 				self.levelUp()
-
 
 	def takeDamage(self, damage):
 		damageTaken = max(1, damage - self._defense)
