@@ -196,7 +196,7 @@ class objActor:
 		self._animation = ASSETS.animDict[self._animationKey]
 ```
 
-and the creature component:
+Creature Component:
 
 ```python
 
@@ -355,11 +355,11 @@ My motivation for this project stems from my love of programming and of games. T
 
 # API Reference
 
-The title and credits screen includes ui buttons to continue a saved game, start a new game, quit the game, and to open the options sub-menu.
+The title and credits screen includes GUI buttons to continue a saved game, start a new game, quit the game, and to open the options sub-menu.
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/TitleScreen.PNG "Title Screen")
 
-The options sub-menu has sliders to control the volume of game sound effects and music and a button to save these preferences to a file. (Saved preferences are automatically loaded when the game is run.)
+The options sub-menu has GUI sliders to control the volume of game sound effects and music and a button to save these preferences to a file. (Saved preferences are automatically loaded when the game is run.)
 
 ![alt text](https://github.com/Blaine-Rob5000/STECH-Capstone/blob/Images/OptionsMenu.PNG "Options Menu")
 
