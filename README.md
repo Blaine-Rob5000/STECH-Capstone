@@ -240,7 +240,9 @@ class compCreature:
 			const.COLOR_ATTACK)
 
 		# if the target is a turtle, chance to break player's weapon
-		if self.owner == PLAYER and target._nameObject == "turtle" and doryen.random_get_int(0, 1, 100) <= const.BREAK_CHANCE:
+		if self.owner == PLAYER and
+				target._nameObject == "turtle" and
+				doryen.random_get_int(0, 1, 100) <= const.BREAK_CHANCE:
 
 			allEquippedItems = self.owner.container._equippedItems
 			if allEquippedItems:
@@ -250,7 +252,9 @@ class compCreature:
 						self.owner.container._inventory.remove(item)
 
 		# if the attacker is a turtle, chance to break player's shield
-		if self.owner._nameObject == "turtle" and target == PLAYER and doryen.random_get_int(0, 1, 100) <= const.BREAK_CHANCE:
+		if self.owner._nameObject == "turtle" and
+				target == PLAYER and
+				doryen.random_get_int(0, 1, 100) <= const.BREAK_CHANCE:
 
 			allEquippedItems = target.container._equippedItems
 
